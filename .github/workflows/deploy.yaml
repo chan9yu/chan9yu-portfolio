@@ -11,19 +11,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📦 Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: 📦 pnpm 설치
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.0
+          run_install: false
 
       - name: 📦 Node.js 설치
         uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
-          cache: 'yarn'
+          cache: 'pnpm'
 
       - name: 📦 의존성 설치
-        run: yarn install --immutable --immutable-cache --check-cache
+        run: pnpm install --frozen-lockfile
 
       - name: 📦 서비스 빌드
-        run: yarn build
+        run: pnpm build
 
       - name: 📦 GitHub Pages 배포
         uses: peaceiris/actions-gh-pages@v3

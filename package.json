@@ -3,7 +3,7 @@
 	"version": "2.0.0",
 	"private": true,
 	"description": "👨🏻‍💻 @chan9yu portfolio.",
-	"packageManager": "yarn@1.22.22",
+	"packageManager": "pnpm@9.15.0",
 	"author": "chan9yu <dev.cgyeo@gmail.com>",
 	"repository": {
 		"type": "git",
