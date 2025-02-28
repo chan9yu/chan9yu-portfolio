@@ -1,14 +1,17 @@
-import '../styles/globals.css';
+import '../shared/styles/globals.css';
 
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { PropsWithChildren } from 'react';
 
+import NavSidebar from '../shared/components/common/NavSidebar';
+
 const pretendard = localFont({
-	src: '../assets/fonts/PretendardVariable.woff2',
+	src: '../shared/fonts/PretendardVariable.woff2',
 	display: 'swap',
 	weight: '45 920',
-	variable: '--font-pretendard'
+	variable: '--font-pretendard',
+	preload: true
 });
 
 export const metadata: Metadata = {
@@ -22,7 +25,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
 	return (
 		<html lang="ko" className={pretendard.variable}>
-			<body>{children}</body>
+			<body className="relative h-dvh w-dvw">
+				<NavSidebar />
+				{children}
+			</body>
 		</html>
 	);
 }
